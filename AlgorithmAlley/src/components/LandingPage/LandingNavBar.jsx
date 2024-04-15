@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@mui/material';
 
+
 // import MenuIcon from '@mui/icons-material/Menu';
 
 const LandingNavBar = () => {
@@ -16,15 +17,15 @@ const LandingNavBar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: 'primary.main' }}>
+    <AppBar position="static" sx={{ bgcolor: 'rgba(0, 0, 0, 0.85)' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Logo" style={{ height: 40, marginRight: 10 }} />
-          <span>Logo Name</span>
+          <img src="/AALogo.jpg" alt="Logo" style={{ height: 40,width:40, marginRight: 10, borderRadius: '50%' }} />
+          <span>Algorithm Alley</span>
         </Typography>
-        <span style={{ marginRight: '20px', display: 'none', '@media (min-width:600px)': { display: 'inline-block' } }}>About</span>
-        <Button color="inherit">Login</Button>
-        <Button color="inherit">Sign Up</Button>
+        {/* <span style={{ marginRight: '20px', '@media (min-width:600px)': { display: 'inline-block' } }}>About Us</span> */}
+        <Button color="inherit">SignIn</Button>
+        <Button color="inherit">Register</Button>
         <IconButton
           size="large"
           edge="end"
