@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@mui/material';
-
-
-// import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@mui/icons-material/Menu'; // Add MenuIcon if you're going to use it
 
 const LandingNavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    // Check authentication status on mount
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -16,16 +23,27 @@ const LandingNavBar = () => {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+    window.location.href = '/';
+  };
+
   return (
     <AppBar position="static" sx={{ bgcolor: 'rgba(0, 0, 0, 0.85)' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-          <img src="/AALogo.jpg" alt="Logo" style={{ height: 40,width:40, marginRight: 10, borderRadius: '50%' }} />
+          <img src="/AALogo.jpg" alt="Logo" style={{ height: 40, width: 40, marginRight: 10, borderRadius: '50%' }} />
           <span>Algorithm Alley</span>
         </Typography>
-        {/* <span style={{ marginRight: '20px', '@media (min-width:600px)': { display: 'inline-block' } }}>About Us</span> */}
-        <Button color="inherit">SignIn</Button>
-        <Button color="inherit">Register</Button>
+        {!isAuthenticated ? (
+          <>
+            <Button color="inherit" onClick={() => window.location.href = '/signin'}>Sign In</Button>
+            <Button color="inherit" onClick={() => window.location.href = '/register'}>Register</Button>
+          </>
+        ) : (
+          <Button color="inherit" onClick={handleLogout}>Logout</Button>
+        )}
         <IconButton
           size="large"
           edge="end"
@@ -34,7 +52,7 @@ const LandingNavBar = () => {
           onClick={handleMenu}
           sx={{ display: { xs: 'block', md: 'none' } }}
         >
-        
+          <MenuIcon />
         </IconButton>
         <Menu
           anchorEl={anchorEl}
@@ -73,7 +91,7 @@ const LandingNavBar = () => {
         </Menu>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default LandingNavBar
+export default LandingNavBar;

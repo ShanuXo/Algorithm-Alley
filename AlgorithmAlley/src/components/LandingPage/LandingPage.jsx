@@ -18,7 +18,7 @@ const LandingPage = () => {
           alignItems: "center",
         }}
       >
-        <Grid container spacing={3} columns={6}>
+        <Grid container spacing={2} columns={6}>
           <Grid item xs={6}>
             <div
               style={{
@@ -27,14 +27,13 @@ const LandingPage = () => {
                 alignItems: "center",
                 height: "80vh",
                 backgroundColor:"white",
-                border:"dashed"
               }}
             >
             <img src={Logo} alt="" width="450px"/>
             </div>
           </Grid>
         </Grid>
-        <Grid container spacing={3} columns={6}>
+        <Grid container spacing={2} columns={6}>
           <Grid item xs={6}>
             <div
               style={{
@@ -42,30 +41,12 @@ const LandingPage = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 height: "80vh",
-                backgroundColor:"white",
-                border:"dashed",
-                
+                backgroundColor:"white",                
               }}
             ><div>
               Dive into the heart of coding mastery with our dynamic online hub! 
               Welcome to the epicenter of algorithmic excellence—where learning meets innovation and every challenge is an opportunity to shine
             </div>              
-            </div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3} columns={6}>
-          <Grid item xs={6}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "80vh",
-                backgroundColor:"white",
-                border:"dashed"
-              }}
-            >
-             <VideoPlayer video={HelloWorld} /> 
             </div>
           </Grid>
         </Grid>
